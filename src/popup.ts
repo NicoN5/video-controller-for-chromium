@@ -256,4 +256,13 @@ async function controlVideo(controlName: string, value: any) {
 async function getCurrentTabId() {
     let queryOptions: chrome.tabs.QueryInfo = { active: true, lastFocusedWindow: true };
     // `tab` will either be a `tabs.Tab` instance or `undefined`.
-    let [t
+    let [tab] = await chrome.tabs.query(queryOptions);
+    return tab.id;
+}
+
+const networkStates = [
+    'Empty',
+    'Idle',
+    'Loading',
+    'NoSource'
+]
